@@ -9,8 +9,10 @@ const Shop = () => {
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])
+    const [cart,setCart]=useState([])
     const handleAddToCart=(product)=>{
-        console.log(product)
+        const newCart=[...cart,product]
+        setCart(newCart);
     }
     return (
         <div className='shop-container'>
@@ -24,7 +26,7 @@ const Shop = () => {
                 }
             </div>
             <div className='cart-container'>
-                <h4>Products cart here: </h4>
+                <h5>Selected Items: {cart.length}</h5>
             </div>
         </div>
     );
